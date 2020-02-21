@@ -4,6 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.2",
+    "bunyan": "^1.8.12",
     "restify": "^8.4.0"
   },
   "scripts": {
