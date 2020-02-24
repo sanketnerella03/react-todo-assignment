@@ -5,8 +5,8 @@ import TaskList from '../task-list/task-list.component';
 const TaskListItem = ({...itemProps}) => {
     return(
         <div>
-            Task List Item {`${itemProps.title} id ${itemProps.id}`}
-            <Link to={`form`}/></Link>
+            Task List Item {`${itemProps.title}`}
+            <Link to={`task/${itemProps.id}`}>{itemProps.id}</Link>
             <div>
             {
                 itemProps.tasks && itemProps.tasks.length > 0 ? (

@@ -3,4 +3,25 @@
     background-color: #3f51b5;
     color: #fff;
     box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+    text-align: center;
+    padding-top: 8px;
+    font-size: 20px;
+}
+.home-icon{
+    display: inline-block;
+    position: absolute;
+    left: 15px;
+}
+.current-title{
+    display: inline-block;
+}
+.reminder-icon{
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+}
+.home-icon button, .reminder-icon button{
+    background: transparent;
+    border: 0px;
+    color: white;
 }

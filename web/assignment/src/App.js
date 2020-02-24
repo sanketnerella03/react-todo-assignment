@@ -18,7 +18,7 @@ function App() {
           <Route exact path="/" render={() => <Redirect to="home" />} />
           <Route path="/home" component={HomePage} />
           <Route path="/reminders" component={RemaindersPage} />
-          <Route path="/form/:id" component={FormPage} />
+          <Route path="/task/:id" component={FormPage} />
         </Switch>
       </div>
     </MyProvider>
