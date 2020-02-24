@@ -1,11 +1,11 @@
 import React from 'react';
 
-const HomeItem = () => {
+const TaskList = () => {
     return (
         <div>
-            Home Item Works!!
+            Task List
         </div>
     );
 }
 
-export default HomeItem;
+export default TaskList;
