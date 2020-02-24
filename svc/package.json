@@ -6,7 +6,8 @@
   "dependencies": {
     "axios": "^0.19.2",
     "bunyan": "^1.8.12",
-    "restify": "^8.4.0"
+    "restify": "^8.4.0",
+    "restify-cors-middleware": "^1.1.1"
   },
   "scripts": {
     "start": "node index.js"
