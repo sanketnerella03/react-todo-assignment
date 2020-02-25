@@ -1,0 +1,13 @@
+.action-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.action-items button{
+    border: 0px;
+    background: transparent;
+    font-size: 28px;
+    color: #6fbbd3;
+}

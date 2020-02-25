@@ -1,14 +1,19 @@
 import React from 'react';
 import TaskListItem from '../task-list-item/task-list-item.component';
 
-const TaskList = ({tasks, updateTasksList}) => {
+const TaskList = ({tasks}) => {
     return (
         <div>
+            <ul className="list-group">
             {
                 tasks.map(({...taskProps}) => (
-                    <TaskListItem key={taskProps.id} {...taskProps} />
+                    <li key={taskProps.id} className="list-group-item">
+      
+                        <TaskListItem {...taskProps} />
+                    </li>
                 ))
             }
+            </ul>
         </div>
     );
 }

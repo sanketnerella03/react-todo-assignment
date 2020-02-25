@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import logo from "./logo.svg";
 
@@ -7,11 +7,13 @@ import HomePage from "./pages/home/home.component";
 import RemaindersPage from "./pages/remainders/remainders.component";
 import FormPage from "./pages/form/form.component";
 import Header from "./components/header/header.component";
-import MyProvider from "./provider/MyProvider";
+import AppContext from './context/AppContext';
+import { initialState, reducer } from './reducer/AppReducer';
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <MyProvider>
+    <AppContext.Provider value={{ state, dispatch }}>
       <div>
         <Header />
         <Switch>
@@ -21,7 +23,7 @@ function App() {
           <Route path="/task/:id" component={FormPage} />
         </Switch>
       </div>
-    </MyProvider>
+    </AppContext.Provider>
   );
 }
 
