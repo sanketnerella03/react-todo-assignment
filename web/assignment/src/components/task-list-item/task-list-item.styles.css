@@ -1,13 +1,24 @@
-.action-items {
+.content-section{
     display: flex;
+}
+
+.action-items {
+    margin-left: auto;
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
 }
-
+.right-section {
+    margin-left: 15px; 
+}
 .action-items button{
-    border: 0px;
-    background: transparent;
-    font-size: 28px;
+    padding: 0px;   
+    font-size: 18px;
     color: #6fbbd3;
+}
+.sub-task-section{
+    margin: 0px 20px;
 }
