@@ -29,10 +29,6 @@ const HomePage = () => {
     // {({ tasks, updateTasksList }) => (
     <div>
       <TaskList tasks={state.tasks}></TaskList>
-      <div className="fab">
-        {" "}
-        <button type="button"> + </button>
-      </div>
     </div>
     // )}
     //   </MyContext.Consumer>

@@ -1,0 +1,18 @@
+.edit-form-section {
+    display: inline-block;
+    padding: 25px 60px;
+}
+.edit-page-container{
+    text-align: center;
+}
+.edit-fields {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.edit-action-section {
+    margin-top: 25px;
+}
+
+.edit-action-section button {
+    margin: 0px 5px;
+}

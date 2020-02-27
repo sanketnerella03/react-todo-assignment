@@ -20,7 +20,7 @@ const TaskListItem = withRouter(({ history, ...itemProps }) => {
   };
   const handleEditRequest = () => {
     console.log("Edit clicked");
-    history.push(`/form/${itemProps.id}`)
+    history.push(`/edit/${itemProps.id}`)
   };
   const handleDeleteRequest = () => {
     console.log("Delete clicked");

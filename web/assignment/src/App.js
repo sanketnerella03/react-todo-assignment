@@ -4,8 +4,8 @@ import logo from "./logo.svg";
 
 import "./App.css";
 import HomePage from "./pages/home/home.component";
-import RemaindersPage from "./pages/remainders/remainders.component";
-import FormPage from "./pages/form/form.component";
+import RemindersPage from "./pages/reminders/reminders.component";
+import EditPage from "./pages/edit/edit.component";
 import Header from "./components/header/header.component";
 import AppContext from './context/AppContext';
 import { initialState, reducer } from './reducer/AppReducer';
@@ -19,8 +19,8 @@ function App() {
         <Switch>
           <Route exact path="/" render={() => <Redirect to="home" />} />
           <Route path="/home" component={HomePage} />
-          <Route path="/reminders" component={RemaindersPage} />
-          <Route path="/form/:id" component={FormPage} />
+          <Route path="/reminders" component={RemindersPage} />
+          <Route path="/edit/:id" component={EditPage} />
         </Switch>
       </div>
     </AppContext.Provider>
