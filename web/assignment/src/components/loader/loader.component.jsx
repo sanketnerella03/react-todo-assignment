@@ -1,19 +1,19 @@
 import React, {useContext} from 'react';
-import LoaderContext from '../../context/LoaderContext';
+import LoaderContext from '../../utils/contexts/LoaderContext';
 import './loader.styles.css';
 
 const LoaderComponent = () => {
     const {loaderFlag} = useContext(LoaderContext);
 
     return (
-        <div>
+        <React.Fragment>
             {   
                 loaderFlag.showLoader ? (
                     <div className='loader'>
                     </div>
                 ) : null
             }
-        </div>
+        </React.Fragment>
         
     );
 }

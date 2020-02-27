@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import AppContext from '../../context/AppContext';
+import AppContext from '../../utils/contexts/AppContext';
 import './reminders.styles.css';
 import {
     faEdit

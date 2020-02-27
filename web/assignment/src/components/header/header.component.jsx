@@ -9,6 +9,7 @@ const Header = ({history, logger, testProp}) => {
   const [title, setTitle] = useState("Home");
 
   const handleHomeClick = () => {
+    console.log("calling logger in header");
     logger.info("handle home click");
     logger.error(testProp);
     if (title !== "Home") {
