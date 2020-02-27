@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
+import { withLogger } from "../logger/logger.js";
 import "./header.styles.css";
-import MyContext from "../../context/AppContext";
 import { faHome, faBell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Header = ({history}) => {
+const Header = ({history, logger, testProp}) => {
   const [title, setTitle] = useState("Home");
 
   const handleHomeClick = () => {
+    logger.info("handle home click");
+    logger.error(testProp);
     if (title !== "Home") {
       setTitle("Home");
     }
@@ -44,4 +46,4 @@ const Header = ({history}) => {
     </div>
   );
 };
-export default withRouter(Header);
+export default withLogger(withRouter(Header));

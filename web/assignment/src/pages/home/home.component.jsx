@@ -3,17 +3,20 @@ import TaskList from "../../components/task-list/task-list.component";
 import AppContext from "../../context/AppContext";
 import "./home.styles.css";
 import axios from "axios";
+import LoaderContext from "../../context/LoaderContext";
 
 const HomePage = () => {
   const { state, dispatch } = useContext(AppContext);
-
+    const { updateLoader } = useContext(LoaderContext);
   const updateTasksList = () => {
+      updateLoader({type: 'UPDATE_LOADER', showLoaderFlag: true });
     axios
       .get("http://localhost:3000/tasks")
       .then(data => {
         console.log("data updated", data);
         //dispa
         dispatch({type: 'UPDATE_TASKS', data: data.data});
+        updateLoader({type: 'UPDATE_LOADER', showLoaderFlag: false});
       })
       .catch(error => {
         console.log("update task list error", error);
