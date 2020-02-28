@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { Link, withRouter } from "react-router-dom";
+import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 import "./task-list-item.styles.css";
 import TaskList from "../task-list/task-list.component";
 import {
@@ -9,10 +9,10 @@ import {
   faChevronCircleUp
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from 'axios';
+import axios from "axios";
+import appUtilHOC from "../../utils/hoc/app-util.hoc";
 
-
-const TaskListItem = withRouter(({ history, ...itemProps }) => {
+const TaskListItem = ({ history, loader, logger, popup ,...itemProps }) => {
   const [showSubTaks, toggleShowSubtask] = useState(false);
   const handleSubtaskToggle = () => {
     console.log("subtask toggle clicked");
@@ -20,30 +20,41 @@ const TaskListItem = withRouter(({ history, ...itemProps }) => {
   };
   const handleEditRequest = () => {
     console.log("Edit clicked");
-    history.push(`/edit/${itemProps.id}`)
+    history.push(`/edit/${itemProps.id}`);
   };
   const handleDeleteRequest = () => {
     console.log("Delete clicked");
-    axios.delete(`http://localhost:3000/tasks/${itemProps.id}`).then((response) => {
-      console.log(" delete response");
-      history.push(`/`);
-    }).catch(error => {
-      console.log("delete error");
-    })
+    loader.showLoader();
+    axios
+      .delete(`http://localhost:3000/tasks/${itemProps.id}`)
+      .then(response => {
+        console.log(" delete response");
+        loader.hideLoader();
+        popup.showPopup({title: 'Success', message: `Successfully deleted task ${itemProps.title}`}, () => {
+            history.push("/");
+        });
+      })
+      .catch(error => {
+        console.log("delete error");
+        loader.hideLoader();
+        popup.showPopup({title: 'Error', message: `Something went wrong deleting task: ${itemProps.title}`}, () => {
+            history.push("/");
+        });
+      });
   };
   return (
-    <div className='shadow pb-10 rounded'>
-      {/* Task List Item {`${itemProps.title}`}
-      <Link to={`task/${itemProps.id}`}>{itemProps.id}</Link> */}
-      <div className='content-section'>
-
-
-        <div className='left-section'>
+    <div className="shadow pb-10 rounded">
+      <div className="content-section">
+        <div className="left-section">
           <button className="btn" onClick={handleSubtaskToggle}>
-  { showSubTaks ? (<FontAwesomeIcon icon={faChevronCircleUp} />) : (<FontAwesomeIcon icon={faChevronCircleDown} />)}
+            {showSubTaks ? (
+              <FontAwesomeIcon icon={faChevronCircleUp} />
+            ) : (
+              <FontAwesomeIcon icon={faChevronCircleDown} />
+            )}
           </button>
         </div>
-        <div className='right-section'>
+        <div className="right-section">
           <div>
             <span>{itemProps.title}</span>
           </div>
@@ -66,14 +77,13 @@ const TaskListItem = withRouter(({ history, ...itemProps }) => {
           </div>
         </div>
       </div>
-      {
-        showSubTaks ? 
-        <div className='sub-task-section'>
+      {showSubTaks ? (
+        <div className="sub-task-section">
           <TaskList tasks={itemProps.tasks} rootTaskId={itemProps.id} />
-        </div> : null
-      }
+        </div>
+      ) : null}
     </div>
   );
-});
+};
 
-export default TaskListItem;
+export default withRouter(appUtilHOC(TaskListItem));

@@ -101,13 +101,14 @@ A base restify service has been created on your behalf in the "svc" folder. "ind
 - Edit page (/edit)
 - 404 page - Ensure a 404 page is shown when an address (in the address bar of the browser) is used that does not correspond to a page that exists in the application. eg. http://localhost:3000/thispathdoesnotexist
 
-3. Add an image that will always display irrespective of the route.
+3. Add an image that will always display irrespective of the route. neo
 
-4. Build the header as a styled-component of which the Font color can be changed using the color prop. Also ensure the component has a default color. Then add a Heading on each of the pages that will display the name of the page the user is on (eg. Home, Reminders etc). Use the default component on all the pages but override the color on the header on the ***HOME*** page
+4. Build the header as a styled-component of which the Font color can be changed using the color prop. Also ensure the component has a default color. Then add a Heading on each of the pages that will display the name of the page the user is on (eg. Home, Reminders etc). Use the default component on all the pages but override the color on the header on the ***HOME*** page neo
 
 5. Add a menu to allow user to navigate to the pages listed below. The menu must always be shown irrespective of the page you are on.
 - Home page
 - Reminders page
+neo
 
 Bonus: Accentuate the active menu Item (in other words, make the menu item bold, or change the colour of the text if the corresponding page is active.
 
@@ -131,11 +132,11 @@ Bonus: Accentuate the active menu Item (in other words, make the menu item bold,
 - When the screen loads, Get all the tasks and show them in the home screen by calling the todo service (using the fetch API) you built in an asynchronous ***non blocking*** fashion.
   - Ensure you deal with the exception cases iow, show an error on screen if the call was unsuccessful (Truthy/Falsy check applies)
   - Show a busy indicator whilst the server call is in progress (Truthy/Falsy check applies)
-  - Show a 'No tasks' message when there are no tasks rather than an empty screen. (Truthy/Falsy check applies)
-- Create a single reusable component that represents a task.
+  - Show a 'No tasks' message when there are no tasks rather than an empty screen. (Truthy/Falsy check applies) neo
+- Create a single reusable component that represents a task. 
   - Show in some way that a task has sub tasks when relevant. Recommendation is to display the sub-tasks within the parent tasks, but you can also try to show it in an hierarchical way.
-  - BONUS: Using styled components allow any instance or set of instances of the task component to have a configurable background color. Example; have the root tasks be a default color of green, have the first level of sub-tasks be red.
-  - Use propTypes to define the component contracts using reasonable props, eg color.
+  - BONUS: Using styled components allow any instance or set of instances of the task component to have a configurable background color. Example; have the root tasks be a default color of green, have the first level of sub-tasks be red. neo
+  - Use propTypes to define the component contracts using reasonable props, eg color. neo
 - Add a component to the top of the screen where a user can quickly ***add*** a new ***root task***
   - Update the task list automatically when the user adds the task
 
@@ -155,7 +156,7 @@ Bonus: Accentuate the active menu Item (in other words, make the menu item bold,
 
 Add a button somewhere on your homepage that will navigate the user to the ***Reminders page***
 
-- That page needs to show the user all tasks in a list that are due to be completed within 24 hours (based on due date), where the status is ***not in a done state***.
+- That page needs to show the user all tasks in a list that are due to be completed within 24 hours (based on due date), where the status is ***not in a done state***. neo
 - Allow the user to go back to the home page
 
 
