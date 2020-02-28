@@ -13,12 +13,12 @@ const RemindersPage = ({ history }) => {
   };
   const filterDisplayList = (returnArray, task) => {
     console.log("filter diplsay list", returnArray);
-    if (isTaskEligible(task.dueDate)) {
+    if (isTaskEligible(task.dueDate) && !task.status) {
       returnArray.push(task);
     }
     if (task.tasks) {
       task.tasks.forEach(subtask => {
-        if (isTaskEligible(subtask.dueDate)) {
+        if (isTaskEligible(subtask.dueDate) && !task.status) {
           returnArray.push(subtask);
         }
       });

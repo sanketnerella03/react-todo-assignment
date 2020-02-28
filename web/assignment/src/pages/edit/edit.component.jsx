@@ -5,7 +5,7 @@ import "./edit.styles.css";
 import Axios from "axios";
 import appUtilHOC from "../../utils/hoc/app-util.hoc";
 
-const EditPage = ({ match, loader, logger, popup ,history }) => {
+const EditPage = ({ match, loader, logger, popup, history }) => {
   const today = new Date();
   const minDate = `${today.getFullYear()}-${
     today.getMonth() + 1 < 10
@@ -32,9 +32,15 @@ const EditPage = ({ match, loader, logger, popup ,history }) => {
         .catch(error => {
           console.log("Error fetching task in form page");
           loader.hideLoader();
-          popup.showPopup({title: 'Error', message: `Something went wrong fetching details for task: ${match.params.id}. Redirecting to Home`}, () => {
-            history.push("/");
-        });
+          popup.showPopup(
+            {
+              title: "Error",
+              message: `Something went wrong fetching details for task: ${match.params.id}. Redirecting to Home`
+            },
+            () => {
+              history.push("/");
+            }
+          );
         });
     } else {
       history.push("/");
@@ -42,13 +48,31 @@ const EditPage = ({ match, loader, logger, popup ,history }) => {
   }, []);
   const handleSaveRequest = event => {
     console.log("updated SAve", task);
+    loader.showLoader();
     Axios.put(`http://localhost:3000/tasks/${task.id}`, task)
       .then(response => {
         console.log("Success while editing", response);
-        history.push("/");
+        loader.hideLoader();
+        popup.showPopup(
+          {
+            title: "Success",
+            message: `Successfully edited task ${task.title}`
+          },
+          () => {
+            history.push("/");
+          }
+        );
       })
       .catch(error => {
         console.log("Error while editing request", error);
+        loader.hideLoader();
+        popup.showPopup(
+          {
+            title: "Error",
+            message: `Something went wrong while editing task ${task.title}`
+          },
+          () => {}
+        );
       });
     event.preventDefault();
   };

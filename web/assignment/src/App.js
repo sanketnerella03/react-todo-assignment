@@ -35,7 +35,7 @@ function App() {
       <LoaderContext.Provider value={{ loaderFlag, updateLoader }}>
         <PopupContext.Provider value={{ popupState, updatePopupState }}>
           <div>
-            <Header />
+            <Header fontColor='#6fbbd3'/>
             <Switch>
               <Route exact path="/" render={() => <Redirect to="home" />} />
               <Route path="/home" component={HomePage} />
