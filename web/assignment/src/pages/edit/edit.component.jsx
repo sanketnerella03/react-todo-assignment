@@ -45,7 +45,7 @@ const EditPage = ({ match, loader, logger, popup, history }) => {
     } else {
       history.push("/");
     }
-  });
+  }, []);
   const handleSaveRequest = event => {
     console.log("updated SAve", task);
     loader.showLoader();
