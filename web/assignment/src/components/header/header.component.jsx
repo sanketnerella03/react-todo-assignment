@@ -5,11 +5,8 @@ import { faHome, faBell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from 'styled-components';
 
-const Header = ({history, fontColor}) => {
-  const [title, setTitle] = useState("Home");
-
-  const HeaderTitle = styled.span`
-    color: ${ ({title}) => {
+const HeaderTitle = styled.span`
+    color: ${ ({title, fontColor}) => {
       if(title === 'Home'){
         return fontColor;
       }
@@ -27,6 +24,10 @@ const Header = ({history, fontColor}) => {
   }
   }
   `;
+
+const Header = ({history, fontColor}) => {
+  const [title, setTitle] = useState("Home");
+  
   useEffect(() => {
     console.log("Router change", history.location.pathname);
     if(history.location.pathname.indexOf('edit') !== -1){
@@ -36,7 +37,7 @@ const Header = ({history, fontColor}) => {
     }else{
       setTitle('Home');
     }
-  },[history.location.key]);
+  },[history.location.pathname]);
 
   const handleHomeClick = () => {
     console.log("calling logger in header");
@@ -56,7 +57,7 @@ const Header = ({history, fontColor}) => {
         </button>
       </MenuIconContainer>
       <div className="current-title">
-        <HeaderTitle title={title} >{title}</HeaderTitle>
+        <HeaderTitle title={title} fontColor={fontColor} >{title}</HeaderTitle>
       </div>
       <MenuIconContainer selectedMenu={title === 'Reminders'} className="reminder-icon">
         <button onClick={handleReminderClick}>

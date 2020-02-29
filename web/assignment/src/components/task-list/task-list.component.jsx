@@ -66,7 +66,15 @@ const TaskList = ({ tasks, rootTaskId, history, loader, logger, popup }) => {
                 <TaskListItem {...taskProps} />
               </li>
             ))
-          : null}
+          : (
+            <li className='list-group-item'>
+              <div className="shadow rounded" style={{ padding: "5px 0px", textAlign: "center" }}>
+                <span>
+                {rootTaskId ? "No Sub Tasks" : "No Tasks"}
+                </span>
+              </div>
+            </li>
+          )}
       </ul>
     </div>
   );
